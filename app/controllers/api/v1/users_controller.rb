@@ -1,11 +1,9 @@
 class Api::V1::UsersController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @users = User.all
-
-    render json: @users
-  end
-
-  def show
-    render json: @user
+    render json: {
+      user: current_user,
+      message: 'You are in'
+    }, status: :ok
   end
 end
