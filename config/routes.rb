@@ -2,8 +2,12 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :users
-      resources :cleaners
+      resources :users do
+        resources :appointments
+      end
+      resources :cleaners do
+        resources :appointments
+      end
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
