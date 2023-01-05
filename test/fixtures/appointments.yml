@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: MyString
+  date: 2023-01-04
+  user: one
+  cleaner: one
+
+two:
+  location: MyString
+  date: 2023-01-04
+  user: two
+  cleaner: two
