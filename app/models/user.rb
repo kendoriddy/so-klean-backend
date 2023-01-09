@@ -9,6 +9,6 @@ class User < ApplicationRecord
   has_many :cleaners, through: :appointments
 
   def jwt_payload
-    super
+    super.merge('foo' => 'bar')
   end
 end
