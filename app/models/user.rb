@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :cleaners, through: :appointments
 
+  validates :username, presence: true
+
   def jwt_payload
     super.merge('foo' => 'bar')
   end
