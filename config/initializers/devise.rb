@@ -10,17 +10,15 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   config.jwt do |jwt|
-    # jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
-    # jwt.secret = Rails.application.secret_key_base
-    jwt.secret = Rails.application.credentials.fetch(:secret_key_base)
+    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
     jwt.dispatch_requests = [
-      ['POST', %r{^/login$}]
+      ['POST', %r{^/sign_in$}]
     ]
     jwt.revocation_requests = [
-      ['DELETE', %r{^/logout$}]
+      ['DELETE', %r{^/sign_out$}]
     ]
-    jwt.expiration_time = 1.day.to_i
-end
+    jwt.expiration_time = 15.day.to_i
+  end
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
