@@ -1,5 +1,6 @@
 class Api::V1::AppointmentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_appointment, only: %i[destroy]
   load_and_authorize_resource
 
   def index
@@ -22,11 +23,18 @@ class Api::V1::AppointmentsController < ApplicationController
     end
   end
 
+  def destroy
+    render json: { message: 'Appointment deleted successfully' } if @appointment.destroy
+  end
+
 
   private
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
+
   def appointment_params
     params.require(:appointment).permit(:location, :date, :cleaner_id)
   end
-  
 
 end
