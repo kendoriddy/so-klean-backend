@@ -11,7 +11,7 @@ class Ability
       can :create, :appointments
     elsif user.customer?
       can :read, Appointment, user_id: user.id
-      can :create, :appointments
+      can :create, :all
     end
   end
 end
