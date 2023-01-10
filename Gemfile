@@ -47,9 +47,9 @@ group :development do
 end
 
 gem 'active_model_serializers', '~> 0.10.13'
+gem 'cancancan'
 gem 'devise'
 gem 'devise-jwt'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'fast_jsonapi'
 gem 'rubocop', '>= 1.0', '< 2.0'
-gem 'cancancan'

@@ -5,7 +5,7 @@ class Api::V1::AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.accessible_by(current_ability)
-  render json: @appointments
+    render json: @appointments
   end
 
   def create
@@ -18,8 +18,8 @@ class Api::V1::AppointmentsController < ApplicationController
       else
         render json: { status: :error, errors: @appointment.errors }, status: :unprocessable_entity
       end
-    rescue ArgumentError => e
-      render json: { status: :error, message: "Invalid date format" }, status: :bad_request
+    rescue ArgumentError
+      render json: { status: :error, message: 'Invalid date format' }, status: :bad_request
     end
   end
 
@@ -27,8 +27,8 @@ class Api::V1::AppointmentsController < ApplicationController
     render json: { message: 'Appointment deleted successfully' } if @appointment.destroy
   end
 
-
   private
+
   def set_appointment
     @appointment = Appointment.find(params[:id])
   end
@@ -36,5 +36,4 @@ class Api::V1::AppointmentsController < ApplicationController
   def appointment_params
     params.require(:appointment).permit(:location, :date, :cleaner_id)
   end
-
 end

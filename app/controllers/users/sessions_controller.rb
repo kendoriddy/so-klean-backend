@@ -32,14 +32,14 @@ class Users::SessionsController < Devise::SessionsController
   def log_out_success
     render json: {
       message: 'You are logged out',
-      user: current_user,
+      user: current_user
     }, status: (:ok || :unauthorized)
   end
 
   def log_out_failure
     render json: {
       message: 'something went wrong',
-      status: status
+      status:
     }, status: :unprocessable_entity
   end
 end
