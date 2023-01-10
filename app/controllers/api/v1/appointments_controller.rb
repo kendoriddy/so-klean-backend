@@ -1,8 +1,9 @@
 class Api::V1::AppointmentsController < ApplicationController
-  def index
-    # @appointments = current_user.appointments
-    @appointments = Appointment.all
+  before_action :authenticate_user!
+  load_and_authorize_resource
 
-    render json: @appointments
+  def index
+    @appointments = Appointment.accessible_by(current_ability)
+  render json: @appointments
   end
 end
