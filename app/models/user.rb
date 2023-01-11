@@ -12,7 +12,15 @@ class User < ApplicationRecord
 
   validates :username, presence: true
 
+  ROLES = %w[super_admin admin customer].freeze
+
   def jwt_payload
     super.merge('foo' => 'bar')
+  end
+
+  ROLES.each do |role_name|
+    define_method "#{role_name}?" do
+      role == role_name
+    end
   end
 end
