@@ -20,6 +20,17 @@ class Api::V1::CleanersController < ApplicationController
         }, status: :unprocessable_entity
     end
   end
+
+  def show
+    @cleaner = Cleaner.includes(:appointments).find(params[:id])
+
+    @appointments = cleaner.appointments.order(created_at: :desc)
+
+    render json: {
+      cleaner: @cleaner,
+      appointments: @appointments
+    }, status: :created
+  end
   
   def cleaner_params
     params.require(:cleaner).permit(:name, :location, :charges)
