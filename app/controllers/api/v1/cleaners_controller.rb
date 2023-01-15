@@ -32,7 +32,16 @@ class Api::V1::CleanersController < ApplicationController
     }, status: :created
   end
   
+  def destroy
+    @cleaner = Cleaner.find(params[:id])
+    if @cleaner.destroy
+      render json: { message: 'Cleaner deleted successfully.' }
+    else
+      render json: { message: 'Something went wrong, try again' }, status: :unprocessable_entity
+    end
+  end
+  
   def cleaner_params
-    params.require(:cleaner).permit(:name, :location, :charges)
+    params.require(:cleaner).permit(:name, :location, :charges, :photo)
   end
 end

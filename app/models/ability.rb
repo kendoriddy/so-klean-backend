@@ -5,8 +5,7 @@ class Ability
     if user.super_admin?
       can :manage, :all
     elsif user.admin?
-      can :read, :all
-      can :create, :appointments
+      can :manage, :all
     elsif user.customer?
       can :read, Appointment, user_id: user.id
       can :create, :all
