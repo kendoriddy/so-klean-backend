@@ -51,6 +51,6 @@ gem 'cancancan'
 gem 'devise'
 gem 'devise-jwt'
 gem 'dotenv-rails', groups: %i[development test]
+gem 'faker'
 gem 'fast_jsonapi'
 gem 'rubocop', '>= 1.0', '< 2.0'
-gem 'faker'

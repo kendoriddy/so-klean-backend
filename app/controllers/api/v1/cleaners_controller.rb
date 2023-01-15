@@ -5,7 +5,7 @@ class Api::V1::CleanersController < ApplicationController
     @cleaners = Cleaner.all
     render json: @cleaners, status: :ok
   end
-  
+
   def create
     @cleaner = Cleaner.new(cleaner_params)
 
@@ -14,10 +14,10 @@ class Api::V1::CleanersController < ApplicationController
         message: 'Cleaner added successfully'
       }, status: :ok
 
-      else
-        render json: {
-          message: 'Something went wrong, try again'
-        }, status: :unprocessable_entity
+    else
+      render json: {
+        message: 'Something went wrong, try again'
+      }, status: :unprocessable_entity
     end
   end
 
@@ -31,7 +31,7 @@ class Api::V1::CleanersController < ApplicationController
       appointments: @appointments
     }, status: :created
   end
-  
+
   def destroy
     @cleaner = Cleaner.find(params[:id])
     if @cleaner.destroy
@@ -40,7 +40,7 @@ class Api::V1::CleanersController < ApplicationController
       render json: { message: 'Something went wrong, try again' }, status: :unprocessable_entity
     end
   end
-  
+
   def cleaner_params
     params.require(:cleaner).permit(:name, :location, :charges, :photo)
   end
