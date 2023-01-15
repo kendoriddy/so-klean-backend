@@ -4,8 +4,18 @@ class Api::V1::AppointmentsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @appointments = Appointment.accessible_by(current_ability)
+    @appointments = current_user.appointments
     render json: @appointments
+  end
+
+  def show
+    @appointment = Appointment.find(params[:id])
+
+    # @appointments = @cleaner.appointments.order(created_at: :desc)
+
+    render json: {
+      appointment: @appointment
+    }, status: :created
   end
 
   def create
@@ -24,16 +34,18 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def destroy
-    render json: { message: 'Appointment deleted successfully' } if @appointment.destroy
+    return render json: { error: 'Appointment not found' }, status: :not_found unless @current_appointment
+    render json: { message: 'Appointment deleted succesfully.' } if @current_appointment.destroy
   end
+  
 
   private
 
   def set_appointment
-    @appointment = Appointment.find(params[:id])
+    @current_appointment = current_user.appointments.find_by(id: params[:id])
   end
 
   def appointment_params
-    params.require(:appointment).permit(:location, :date, :cleaner_id)
+    params.require(:appointment).permit(:location, :date, :cleaner_id, :user_id)
   end
 end
