@@ -24,7 +24,7 @@ class Api::V1::CleanersController < ApplicationController
   def show
     @cleaner = Cleaner.includes(:appointments).find(params[:id])
 
-    @appointments = cleaner.appointments.order(created_at: :desc)
+    @appointments = @cleaner.appointments.order(created_at: :desc)
 
     render json: {
       cleaner: @cleaner,
