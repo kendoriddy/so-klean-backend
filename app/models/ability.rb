@@ -6,6 +6,7 @@ class Ability
       can :manage, :all
     elsif user.customer?
       can :read, Appointment, user_id: user.id
+      can :read, Cleaner
       can :create, :all
       can :destroy, :all
     end

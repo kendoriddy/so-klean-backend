@@ -53,4 +53,7 @@ gem 'devise-jwt'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'faker'
 gem 'fast_jsonapi'
+gem 'rspec'
+gem 'rspec-rails', '~> 4.0.1'
+gem 'rswag'
 gem 'rubocop', '>= 1.0', '< 2.0'

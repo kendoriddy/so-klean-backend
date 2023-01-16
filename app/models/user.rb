@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :cleaners, through: :appointments
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
 
   ROLES = %w[super_admin admin customer].freeze
 

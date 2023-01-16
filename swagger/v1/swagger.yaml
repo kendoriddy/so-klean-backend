@@ -1,0 +1,253 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/users/{user_id}/appointments":
+    parameters:
+    - name: user_id
+      in: path
+      description: user_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list appointments
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create appointment
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                location:
+                  type: string
+                date:
+                  type: string
+              required:
+              - location
+              - date
+  "/api/v1/users/{user_id}/appointments/{id}":
+    parameters:
+    - name: user_id
+      in: path
+      description: user_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show appointment
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update appointment
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                location:
+                  type: string
+                date:
+                  type: string
+              required:
+              - location
+              - date
+    put:
+      summary: update appointment
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                location:
+                  type: string
+                date:
+                  type: string
+              required:
+              - location
+              - date
+    delete:
+      summary: delete appointment
+      responses:
+        '200':
+          description: successful
+  "/api/v1/cleaners":
+    get:
+      summary: list cleaners
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create cleaner
+      parameters: []
+      responses:
+        '200':
+          description: cleaner added successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+                charges:
+                  type: integer
+                photo:
+                  type: string
+              required:
+              - name
+              - location
+              - charges
+              - photo
+  "/api/v1/cleaners/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show cleaner
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update cleaner
+      parameters: []
+      responses:
+        '200':
+          description: cleaner added successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+                charges:
+                  type: integer
+                photo:
+                  type: string
+              required:
+              - name
+              - location
+              - charges
+              - photo
+    put:
+      summary: update cleaner
+      parameters: []
+      responses:
+        '200':
+          description: cleaner added successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+                charges:
+                  type: integer
+                photo:
+                  type: string
+              required:
+              - name
+              - location
+              - charges
+              - photo
+    delete:
+      summary: delete cleaner
+      responses:
+        '200':
+          description: successful
+  "/users":
+    post:
+      summary: create registration
+      parameters: []
+      responses:
+        '200':
+          description: Sign up successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+  "/users/sign_in":
+    post:
+      summary: create session
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+              - username
+              - password
+  "/users/sign_out":
+    delete:
+      summary: delete session
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
