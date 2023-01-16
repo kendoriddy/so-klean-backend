@@ -2,8 +2,8 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(_resource, _opts = {})
+    self.resource = warden.authenticate!(scope: :user, username: params[:username], password: params[:password])
     login_success && return if current_user
-
     login_failed
   end
 
@@ -18,7 +18,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def login_failed
     render json: {
-      message: 'Invalid login credentials',
+      message: 'Invalid username or password',
       status: 401
     }, status: :unprocessable_entity
   end
