@@ -1,12 +1,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/cleaners', type: :request do
-
   path '/api/v1/cleaners' do
-
     get('list cleaners') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -20,17 +17,16 @@ RSpec.describe 'api/v1/cleaners', type: :request do
 
     post('create cleaner') do
       response(200, 'cleaner added successfully') do
-
         consumes 'application/json'
         parameter name: :cleaner, in: :body, schema: {
-        type: :object,
-        properties: {
-          name: { type: :string },
-          location: { type: :string },
-          charges: { type: :integer },
-          photo: { type: :string }
-        },
-        required: %w[name location charges photo]
+          type: :object,
+          properties: {
+            name: { type: :string },
+            location: { type: :string },
+            charges: { type: :integer },
+            photo: { type: :string }
+          },
+          required: %w[name location charges photo]
         }
 
         after do |example|
@@ -69,14 +65,14 @@ RSpec.describe 'api/v1/cleaners', type: :request do
 
         consumes 'application/json'
         parameter name: :cleaner, in: :body, schema: {
-        type: :object,
-        properties: {
-          name: { type: :string },
-          location: { type: :string },
-          charges: { type: :integer },
-          photo: { type: :string }
-        },
-        required: %w[name location charges photo]
+          type: :object,
+          properties: {
+            name: { type: :string },
+            location: { type: :string },
+            charges: { type: :integer },
+            photo: { type: :string }
+          },
+          required: %w[name location charges photo]
         }
 
         after do |example|
@@ -96,14 +92,14 @@ RSpec.describe 'api/v1/cleaners', type: :request do
 
         consumes 'application/json'
         parameter name: :cleaner, in: :body, schema: {
-        type: :object,
-        properties: {
-          name: { type: :string },
-          location: { type: :string },
-          charges: { type: :integer },
-          photo: { type: :string }
-        },
-        required: %w[name location charges photo]
+          type: :object,
+          properties: {
+            name: { type: :string },
+            location: { type: :string },
+            charges: { type: :integer },
+            photo: { type: :string }
+          },
+          required: %w[name location charges photo]
         }
 
         after do |example|

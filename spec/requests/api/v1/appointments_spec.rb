@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/appointments', type: :request do
-
   path '/api/v1/users/{user_id}/appointments' do
     parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
 
@@ -26,12 +25,12 @@ RSpec.describe 'api/v1/appointments', type: :request do
 
         consumes 'application/json'
         parameter name: :doctor, in: :body, schema: {
-        type: :object,
-        properties: {
-          location: { type: :string },
-          date: { type: :string }
-        },
-        required: %w[location date]
+          type: :object,
+          properties: {
+            location: { type: :string },
+            date: { type: :string }
+          },
+          required: %w[location date]
         }
 
         after do |example|
@@ -73,12 +72,12 @@ RSpec.describe 'api/v1/appointments', type: :request do
 
         consumes 'application/json'
         parameter name: :doctor, in: :body, schema: {
-        type: :object,
-        properties: {
-          location: { type: :string },
-          date: { type: :string }
-        },
-        required: %w[location date]
+          type: :object,
+          properties: {
+            location: { type: :string },
+            date: { type: :string }
+          },
+          required: %w[location date]
         }
 
         after do |example|
@@ -99,12 +98,12 @@ RSpec.describe 'api/v1/appointments', type: :request do
 
         consumes 'application/json'
         parameter name: :doctor, in: :body, schema: {
-        type: :object,
-        properties: {
-          location: { type: :string },
-          date: { type: :string }
-        },
-        required: %w[location date]
+          type: :object,
+          properties: {
+            location: { type: :string },
+            date: { type: :string }
+          },
+          required: %w[location date]
         }
 
         after do |example|

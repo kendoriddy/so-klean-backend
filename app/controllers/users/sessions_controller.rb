@@ -4,6 +4,7 @@ class Users::SessionsController < Devise::SessionsController
   def respond_with(_resource, _opts = {})
     self.resource = warden.authenticate!(scope: :user, username: params[:username], password: params[:password])
     login_success && return if current_user
+
     login_failed
   end
 

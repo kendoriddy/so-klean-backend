@@ -35,9 +35,9 @@ class Api::V1::AppointmentsController < ApplicationController
 
   def destroy
     return render json: { error: 'Appointment not found' }, status: :not_found unless @current_appointment
+
     render json: { message: 'Appointment deleted succesfully.' } if @current_appointment.destroy
   end
-  
 
   private
 
