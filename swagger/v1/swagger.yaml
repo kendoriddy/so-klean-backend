@@ -1,0 +1,110 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/cleaners":
+    get:
+      summary: list cleaners
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create cleaner
+      parameters: []
+      responses:
+        '200':
+          description: cleaner added successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+                charges:
+                  type: float
+                photo:
+                  type: string
+              required:
+              - name
+              - location
+              - charges
+              - photo
+  "/api/v1/cleaners/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show cleaner
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update cleaner
+      parameters: []
+      responses:
+        '200':
+          description: cleaner added successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+                charges:
+                  type: integer
+                photo:
+                  type: string
+              required:
+              - name
+              - location
+              - charges
+              - photo
+    put:
+      summary: update cleaner
+      parameters: []
+      responses:
+        '200':
+          description: cleaner added successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+                charges:
+                  type: integer
+                photo:
+                  type: string
+              required:
+              - name
+              - location
+              - charges
+              - photo
+    delete:
+      summary: delete cleaner
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
