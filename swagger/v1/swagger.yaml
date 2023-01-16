@@ -197,6 +197,29 @@ paths:
       responses:
         '200':
           description: successful
+  "/users":
+    post:
+      summary: create registration
+      parameters: []
+      responses:
+        '200':
+          description: Sign up successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - username
+              - email
+              - password
 servers:
 - url: https://{defaultHost}
   variables:
