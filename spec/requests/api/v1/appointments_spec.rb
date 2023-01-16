@@ -1,11 +1,13 @@
 require 'swagger_helper'
 
-RSpec.describe 'api/v1/cleaners', type: :request do
+RSpec.describe 'api/v1/appointments', type: :request do
 
-  path '/api/v1/cleaners' do
+  path '/api/v1/users/{user_id}/appointments' do
+    parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
 
-    get('list cleaners') do
+    get('list appointments') do
       response(200, 'successful') do
+        let(:user_id) { '123' }
 
         after do |example|
           example.metadata[:response][:content] = {
@@ -18,19 +20,18 @@ RSpec.describe 'api/v1/cleaners', type: :request do
       end
     end
 
-    post('create cleaner') do
-      response(200, 'cleaner added successfully') do
+    post('create appointment') do
+      response(200, 'successful') do
+        let(:user_id) { '123' }
 
         consumes 'application/json'
-        parameter name: :cleaner, in: :body, schema: {
+        parameter name: :doctor, in: :body, schema: {
         type: :object,
         properties: {
-          name: { type: :string },
           location: { type: :string },
-          charges: { type: :integer },
-          photo: { type: :string }
+          date: { type: :string }
         },
-        required: %w[name location charges photo]
+        required: %w[location date]
         }
 
         after do |example|
@@ -45,11 +46,13 @@ RSpec.describe 'api/v1/cleaners', type: :request do
     end
   end
 
-  path '/api/v1/cleaners/{id}' do
+  path '/api/v1/users/{user_id}/appointments/{id}' do
+    parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
-    get('show cleaner') do
+    get('show appointment') do
       response(200, 'successful') do
+        let(:user_id) { '123' }
         let(:id) { '123' }
 
         after do |example|
@@ -63,20 +66,19 @@ RSpec.describe 'api/v1/cleaners', type: :request do
       end
     end
 
-    patch('update cleaner') do
-      response(200, 'cleaner added successfully') do
+    patch('update appointment') do
+      response(200, 'successful') do
+        let(:user_id) { '123' }
         let(:id) { '123' }
 
         consumes 'application/json'
-        parameter name: :cleaner, in: :body, schema: {
+        parameter name: :doctor, in: :body, schema: {
         type: :object,
         properties: {
-          name: { type: :string },
           location: { type: :string },
-          charges: { type: :integer },
-          photo: { type: :string }
+          date: { type: :string }
         },
-        required: %w[name location charges photo]
+        required: %w[location date]
         }
 
         after do |example|
@@ -90,20 +92,19 @@ RSpec.describe 'api/v1/cleaners', type: :request do
       end
     end
 
-    put('update cleaner') do
-      response(200, 'cleaner added successfully') do
+    put('update appointment') do
+      response(200, 'successful') do
+        let(:user_id) { '123' }
         let(:id) { '123' }
 
         consumes 'application/json'
-        parameter name: :cleaner, in: :body, schema: {
+        parameter name: :doctor, in: :body, schema: {
         type: :object,
         properties: {
-          name: { type: :string },
           location: { type: :string },
-          charges: { type: :integer },
-          photo: { type: :string }
+          date: { type: :string }
         },
-        required: %w[name location charges photo]
+        required: %w[location date]
         }
 
         after do |example|
@@ -117,8 +118,9 @@ RSpec.describe 'api/v1/cleaners', type: :request do
       end
     end
 
-    delete('delete cleaner') do
+    delete('delete appointment') do
       response(200, 'successful') do
+        let(:user_id) { '123' }
         let(:id) { '123' }
 
         after do |example|
