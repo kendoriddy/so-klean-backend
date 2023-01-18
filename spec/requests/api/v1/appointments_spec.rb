@@ -28,7 +28,8 @@ RSpec.describe 'api/v1/appointments', type: :request do
           type: :object,
           properties: {
             location: { type: :string },
-            date: { type: :string }
+            date: { type: :string },
+            cleaner_id: { type: :integer }
           },
           required: %w[location date]
         }
