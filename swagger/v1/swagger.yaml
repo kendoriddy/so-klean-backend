@@ -33,6 +33,8 @@ paths:
                   type: string
                 date:
                   type: string
+                cleaner_id:
+                  type: integer
               required:
               - location
               - date
