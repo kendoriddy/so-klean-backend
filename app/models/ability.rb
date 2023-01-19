@@ -2,13 +2,9 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    if user.super_admin? || user.admin?
-      can :manage, :all
-    elsif user.customer?
+    if user.customer?
       can :read, Appointment, user_id: user.id
-      can :read, Cleaner
-      can :create, :all
-      can :destroy, :all
+      can :manage, :all
     end
   end
 end
